@@ -1,25 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
+import LoginPage from './pages/loginPage';
+import NotFound from './pages/notFoundPage';
+import RegisterPage from './pages/registerPage';
+import StartingPage from './pages/startingPage';
+import UserPage from './pages/userPage';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      {/* <Nav/> */}
+      <Routes>
+        
+        {/* {JSON.parse(sessionStorage.getItem('loggedUser')!)==null || <Route path ="*" element = {<NotFound/>} /> } */}
+        <Route path="/userPage" element = {<UserPage/>} />
+        <Route path="/startingpage" element = {<StartingPage/>} />
+        <Route path="/loginPage" element = {<LoginPage/>} />
+
+        <Route path="/registerPage" element = {<RegisterPage/>}/>
+        <Route path="/" element = {<StartingPage/>} />
+
+        <Route path ="*" element = {<NotFound/>} />
+
+      </Routes>
+    </Router>
   );
 }
 
